@@ -1,0 +1,58 @@
+# OS / Editor cruft
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+ehthumbs.db
+Icon?
+*.swp
+*.swo
+*.tmp
+*.bak
+*~
+
+# Node / Bun
+node_modules/
+bun.lockb
+.pnpm-store/
+.npm/
+dist/
+build/
+.cache/
+.next/
+out/
+coverage/
+.env
+.env.local
+.env.*.local
+
+# Python / uv
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env/
+.venv/
+venv/
+.uv/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+bun-debug.log*
+pids/
+*.pid
+
+# IDEs
+.vscode/
+.idea/
+.cursor/
+.history/
+*.code-workspace
+
+# Temp & metadata
+tmp/
+temp/
+._*
+.Trashes
