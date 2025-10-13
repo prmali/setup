@@ -1,41 +1,9 @@
-# Enhanced Starship config with additional modules
-# To use: cp configs/starship-enhanced.toml configs/starship.toml
+# Clean Starship config - colored text without backgrounds
 
-format = """
-[](surface0)\
-$os\
-$username\
-[](bg:blue fg:surface0)\
-$directory\
-[](fg:blue bg:mauve)\
-$git_branch\
-$git_status\
-[](fg:mauve bg:green)\
-$nodejs\
-$bun\
-$python\
-[](fg:green bg:overlay0)\
-$docker_context\
-[](fg:overlay0)\
-$line_break\
-$character"""
+format = """$directory$git_branch$git_status$nodejs$python$bun$docker_context$cmd_duration$line_break$character"""
 
 add_newline = false
 palette = "catppuccin_mocha"
-
-[os]
-disabled = false
-style = "bg:surface0 fg:text"
-format = "[$symbol ]($style)"
-
-[os.symbols]
-Macos = ""
-
-[username]
-show_always = false
-style_user = "bg:surface0 fg:text"
-style_root = "bg:surface0 fg:red"
-format = '[$user ]($style)'
 
 [character]
 success_symbol = "[❯](lavender)"
@@ -43,8 +11,8 @@ error_symbol   = "[❯](red)"
 vimcmd_symbol  = "[❮](green)"
 
 [directory]
-style = "fg:mantle bg:blue bold"
-format = "[ $path ]($style)"
+style = "bold sapphire"
+format = "[$path]($style) "
 truncation_length = 3
 truncate_to_repo = true
 
@@ -56,89 +24,58 @@ truncate_to_repo = true
 "repos" = " "
 
 [git_branch]
-symbol = ""
-style = "bg:mauve"
-format = '[[ $symbol $branch ](fg:mantle bg:mauve)]($style)'
+symbol = "git:"
+style = "mauve"
+format = "[$symbol$branch]($style) "
 
 [git_status]
-style = "bg:mauve"
-format = '[[($all_status$ahead_behind )](fg:mantle bg:mauve)]($style)'
-conflicted = "⚔️ "
-ahead = "⇡${count} "
-behind = "⇣${count} "
-diverged = "⇕⇡${ahead_count}⇣${behind_count} "
+style = "overlay0"
+format = "([$all_status$ahead_behind]($style) )"
+conflicted = "="
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 up_to_date = ""
-untracked = "?${count} "
-stashed = "📦 "
-modified = "!${count} "
-staged = "+${count} "
-renamed = "»${count} "
-deleted = "✘${count} "
+untracked = "?${count}"
+stashed = "$${count}"
+modified = "!${count}"
+staged = "+${count}"
+renamed = "»${count}"
+deleted = "✘${count}"
 
 [nodejs]
-symbol = ""
-style = "bg:green"
-format = '[[ $symbol ($version) ](fg:mantle bg:green)]($style)'
-detect_files = ["package.json", "pnpm-workspace.yaml"]
-
-[bun]
-symbol = ""
-format = '[[ $symbol ($version) ](fg:mantle bg:green)]($style)'
-style = "bg:green"
+symbol = "node:"
+format = "[$symbol$version]($style) "
+style = "green"
+detect_files = ["package.json", "pnpm-workspace.yaml", "bun.lockb"]
 
 [python]
-symbol = ""
-style = "bg:green"
-format = '[[ $symbol ($version) ](fg:mantle bg:green)]($style)'
+symbol = "py:"
+style = "yellow"
+format = "[$symbol$version(($virtualenv))]($style) "
 detect_files = [".python-version", "pyproject.toml", "requirements.txt"]
 
+[bun]
+symbol = "bun:"
+format = "[$symbol$version]($style) "
+style = "teal"
+
 [docker_context]
-symbol = ""
-style = "bg:overlay0"
-format = '[[ $symbol $context ](fg:text bg:overlay0)]($style)'
+symbol = "docker:"
+style = "blue"
+format = "[$symbol$context]($style) "
 only_with_files = true
 
-[time]
-disabled = false
-time_format = "%R"
-style = "bg:overlay0"
-format = '[[  $time ](fg:text bg:overlay0)]($style)'
-
-# Git metrics (optional - shows additions/deletions)
-[git_metrics]
-added_style = "fg:green"
-deleted_style = "fg:red"
-format = "[+$added]($added_style)/[-$deleted]($deleted_style) "
-disabled = false
-
-# Command duration (shows how long commands took)
 [cmd_duration]
 min_time = 500
 format = "took [$duration](bold yellow) "
 disabled = false
 
-# Battery indicator (useful for laptops)
-[battery]
-full_symbol = "🔋"
-charging_symbol = "⚡"
-discharging_symbol = "💀"
+[time]
 disabled = false
-
-[[battery.display]]
-threshold = 10
-style = "bold red"
-
-[[battery.display]]
-threshold = 30
-style = "bold yellow"
-
-# Memory usage (optional)
-[memory_usage]
-disabled = true
-threshold = 75
-symbol = "🐏 "
-format = "$symbol[${ram}]($style) "
-style = "bold dimmed white"
+time_format = "%H:%M"
+format = "[$time]($style) "
+style = "overlay0"
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
@@ -162,4 +99,3 @@ surface0  = "#313244"
 base      = "#1e1e2e"
 mantle    = "#181825"
 crust     = "#11111b"
-
