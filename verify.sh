@@ -48,7 +48,7 @@ check_cmd brew
 check_cmd git
 check_cmd fzf
 check_cmd zoxide
-check_cmd ripgrep
+check_cmd rg
 check_cmd fd
 check_cmd eza
 check_cmd bat
