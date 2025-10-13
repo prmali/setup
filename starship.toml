@@ -1,0 +1,70 @@
+# Catppuccin Mocha vibes, concise prompt
+
+format = "$all"
+add_newline = false
+palette = "catppuccin_mocha"
+
+[character]
+success_symbol = "[❯](lavender)"
+error_symbol   = "[❯](red)"
+vimcmd_symbol  = "[❮](green)"
+
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+style = "bold sapphire"
+
+[git_branch]
+symbol = " "
+style = "mauve"
+format = "[$symbol$branch]($style) "
+
+[git_status]
+style = "overlay0"
+format = "([$all_status$ahead_behind]($style) )"
+
+[nodejs]
+symbol = " "
+format = "[$symbol$version]($style) "
+style = "green"
+detect_files = ["package.json", "pnpm-workspace.yaml", "bun.lockb"]
+
+[python]
+symbol = " "
+style = "yellow"
+# Uses uv's python shim automatically via PATH
+format = "[$symbol$version(\($virtualenv\))]($style) "
+
+[bun]
+symbol = " "
+format = "[$symbol$version]($style) "
+style = "teal"
+
+[time]
+disabled = false
+time_format = "%H:%M"
+format = "[$time]($style) "
+style = "overlay0"
+
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo  = "#f2cdcd"
+pink      = "#f5c2e7"
+mauve     = "#cba6f7"
+red       = "#f38ba8"
+maroon    = "#eba0ac"
+peach     = "#fab387"
+yellow    = "#f9e2af"
+green     = "#a6e3a1"
+teal      = "#94e2d5"
+sky       = "#89dceb"
+sapphire  = "#74c7ec"
+blue      = "#89b4fa"
+lavender  = "#b4befe"
+text      = "#cdd6f4"
+subtext0  = "#a6adc8"
+overlay0  = "#6c7086"
+surface0  = "#313244"
+base      = "#1e1e2e"
+mantle    = "#181825"
+crust     = "#11111b"
