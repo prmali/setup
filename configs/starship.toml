@@ -1,6 +1,6 @@
 # Clean Starship config - colored text without backgrounds
 
-format = """$directory$git_branch$git_status$nodejs$python$bun$docker_context$cmd_duration$line_break$character"""
+format = """$directory$git_branch$git_status$nodejs$python$docker_context$cmd_duration$line_break$character"""
 
 add_newline = false
 palette = "catppuccin_mocha"
@@ -24,7 +24,7 @@ truncate_to_repo = true
 "repos" = " "
 
 [git_branch]
-symbol = "git:"
+symbol = " "
 style = "mauve"
 format = "[$symbol$branch]($style) "
 
@@ -44,26 +44,21 @@ renamed = "»${count}"
 deleted = "✘${count}"
 
 [nodejs]
-symbol = "node:"
-format = "[$symbol$version]($style) "
+symbol = " "
+format = "[$symbol($version )]($style)"
 style = "green"
 detect_files = ["package.json", "pnpm-workspace.yaml", "bun.lockb"]
 
 [python]
-symbol = "py:"
+symbol = " "
 style = "yellow"
-format = "[$symbol$version(($virtualenv))]($style) "
+format = "[$symbol($version )($virtualenv )]($style)"
 detect_files = [".python-version", "pyproject.toml", "requirements.txt"]
 
-[bun]
-symbol = "bun:"
-format = "[$symbol$version]($style) "
-style = "teal"
-
 [docker_context]
-symbol = "docker:"
+symbol = " "
 style = "blue"
-format = "[$symbol$context]($style) "
+format = "[$symbol($context )]($style)"
 only_with_files = true
 
 [cmd_duration]
