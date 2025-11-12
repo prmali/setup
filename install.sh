@@ -131,6 +131,7 @@ if command -v cursor >/dev/null 2>&1; then
   cursor --install-extension biomejs.biome || true
   cursor --install-extension charliermarsh.ruff || true
   cursor --install-extension BeardedBear.beardedicons || true
+  cursor --install-extension eamodio.gitlens || true
 else
   warn "Cursor CLI not found; skipped extension installs."
 fi
@@ -174,6 +175,16 @@ if [[ -f "$SCRIPT_DIR/configs/editorconfig" ]]; then
   cp "$SCRIPT_DIR/configs/editorconfig" "$HOME/.editorconfig"
 else
   warn "configs/editorconfig not found, skipping editorconfig"
+fi
+
+# ----- Terraform config -----
+purple "Configuring Terraform…"
+mkdir -p "$HOME/.terraform.d/plugin-cache"
+if [[ -f "$SCRIPT_DIR/configs/terraformrc" ]]; then
+  cp "$SCRIPT_DIR/configs/terraformrc" "$HOME/.terraformrc"
+  green "Terraform plugin cache enabled at ~/.terraform.d/plugin-cache"
+else
+  warn "configs/terraformrc not found, skipping terraform config"
 fi
 
 green "✅ Finished. Open a new terminal or run: source ~/.zshrc"

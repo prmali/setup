@@ -88,6 +88,16 @@ else
 fi
 
 echo ""
+blue "=== Terraform Tools ==="
+check_cmd terraform
+check_cmd tflint
+check_cmd terraform-docs
+check_cmd tfsec
+check_cmd terragrunt
+check_file "$HOME/.terraformrc"
+check_dir "$HOME/.terraform.d/plugin-cache"
+
+echo ""
 blue "=== Applications ==="
 [[ -d "/Applications/Ghostty.app" ]] && green "Ghostty installed" || yellow "Ghostty not found"
 [[ -d "/Applications/Cursor.app" ]] && green "Cursor installed" || yellow "Cursor not found"

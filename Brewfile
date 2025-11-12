@@ -41,6 +41,13 @@ brew "starship"
 brew "docker"
 brew "docker-compose"
 
+# --- Terraform & IaC Tools ---
+brew "terraform"
+brew "tflint"
+brew "terraform-docs"
+brew "tfsec"
+brew "terragrunt"
+
 # --- Fonts (nice monospace) ---
 cask "font-jetbrains-mono-nerd-font"
 

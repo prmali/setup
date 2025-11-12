@@ -27,12 +27,19 @@ source ~/.zshrc  # Or restart your terminal
 - **Bun** - Fast JavaScript runtime and package manager
 - **Python** (via uv) - Python version and package management
 - **Docker** (via OrbStack) - Container runtime
+- **Terraform** - Infrastructure as Code with full toolchain:
+  - `terraform` - Core IaC tool for provisioning infrastructure
+  - `tflint` - Linter for catching errors and enforcing best practices
+  - `terraform-docs` - Generate documentation from Terraform modules
+  - `tfsec` - Static analysis security scanner
+  - `terragrunt` - DRY wrapper for managing multiple Terraform modules
+  - Global plugin caching configured to speed up `terraform init`
 
 ### Command Line Tools
 - **fzf** - Fuzzy finder (Ctrl+R for history search)
 - **zoxide** - Smart cd replacement
 - **ripgrep** (rg) - Fast grep alternative
-- **fd** - Fast find alternative  
+- **fd** - Fast find alternative
 - **eza** - Modern ls replacement with icons
 - **bat** - cat with syntax highlighting
 - **lazygit** - Beautiful git TUI
@@ -64,7 +71,8 @@ configs/
 ├── cursor-settings.json   # Editor settings
 ├── cursor-extensions.json # Editor extensions
 ├── gitignore_global       # Global git ignores
-└── editorconfig           # Editor formatting rules
+├── editorconfig           # Editor formatting rules
+└── terraformrc            # Terraform plugin caching config
 ```
 
 ### Customizing
@@ -81,7 +89,7 @@ Edit any file in `configs/` and rerun `./install.sh` to apply changes. The scrip
   - `Ctrl+Shift+←/→` - Select by word
   - `Cmd+Shift+←/→` - Select to line start/end
   - `Cmd+↑/↓` - Scroll to top/bottom
-  
+
 - **Tabs:**
   - `Cmd+T` - New tab
   - `Cmd+Shift+]` - Next tab
@@ -174,7 +182,7 @@ cp "$HOME/Library/Application Support/Cursor/User/settings.json.backup" \
 
 Everything uses **Catppuccin Mocha** color scheme for consistency:
 - Terminal (Ghostty)
-- Prompt (Starship)  
+- Prompt (Starship)
 - Terminal multiplexer (tmux)
 - Code editor (Cursor - via extensions)
 
