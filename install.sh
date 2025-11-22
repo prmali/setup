@@ -120,6 +120,12 @@ else
   warn "configs/cursor-settings.json not found, skipping cursor settings"
 fi
 
+if [[ -f "$SCRIPT_DIR/configs/cursor-keybindings.json" ]]; then
+  cp "$SCRIPT_DIR/configs/cursor-keybindings.json" "$CURSOR_USER/keybindings.json"
+else
+  warn "configs/cursor-keybindings.json not found, skipping cursor keybindings"
+fi
+
 if [[ -f "$SCRIPT_DIR/configs/cursor-extensions.json" ]]; then
   cp "$SCRIPT_DIR/configs/cursor-extensions.json" "$CURSOR_USER/extensions.json"
 else

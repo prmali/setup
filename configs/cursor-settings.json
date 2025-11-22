@@ -1,17 +1,52 @@
 {
+  "terminal.external.osxExec": "Ghostty.app",
+
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "biomejs.biome",
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
   "workbench.iconTheme": "bearded-icons",
 
-  "[python]": { "editor.defaultFormatter": "charliermarsh.ruff" },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/node_modules": true,
+    "**/.venv": true,
+    "**/__pycache__": true,
+    "**/.pytest_cache": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.venv": true,
+    "**/__pycache__": true,
+    "**/.pytest_cache": true
+  },
+
   "ruff.lint.enable": true,
   "ruff.organizeImports": true,
   "ruff.importStrategy": "fromEnvironment",
 
+  "[python]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit"
+    },
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit"
+    },
+    "editor.defaultFormatter": "biomejs.biome"
+  },
   "[javascript]": { "editor.defaultFormatter": "biomejs.biome" },
-  "[typescript]":  { "editor.defaultFormatter": "biomejs.biome" },
-  "[json]":        { "editor.defaultFormatter": "biomejs.biome" }
-}
+  "[json]": { "editor.defaultFormatter": "biomejs.biome" },
 
+  "nxConsole.generateAiAgentRules": true
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "key": "cmd+,",
+    "command": "editor.action.goToReferences",
+    "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+  },
+  {
+    "key": "cmd+,",
+    "command": "-workbench.action.openSettings",
+    "when": ""
+  }
+]
