@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:ghostty.org)",
+      "Read(//Users/prathik/.config/**)",
+      "Read(//Users/prathik/Library/Application Support/com.mitchellh.ghostty/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
