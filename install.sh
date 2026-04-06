@@ -93,6 +93,13 @@ if command -v delta >/dev/null 2>&1; then
   git config --global interactive.diffFilter "delta --color-only"
 fi
 
+# Global gitignore (applies to every repo on this machine)
+if [[ -f "$SCRIPT_DIR/configs/gitignore_global" ]]; then
+  mkdir -p "$HOME/.config/git"
+  cp "$SCRIPT_DIR/configs/gitignore_global" "$HOME/.config/git/ignore"
+  git config --global core.excludesfile "$HOME/.config/git/ignore"
+fi
+
 # ----- Ghostty config -----
 purple "Writing Ghostty config…"
 GHOSTTY_DIR="$HOME/Library/Application Support/com.mitchellh.ghostty"
