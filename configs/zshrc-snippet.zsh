@@ -52,15 +52,5 @@ if command -v fzf >/dev/null 2>&1; then
   export FZF_CTRL_R_OPTS="--reverse --border"
 fi
 
-# Optional: uv auto-activate if .python-version exists
-if [[ -f .python-version && -x "$(command -v uv)" ]]; then
-  eval "$(uv activate zsh 2>/dev/null || true)"
-fi
-
-# Optional: Volta pin if .node-version exists
-if [[ -f .node-version && -x "$(command -v volta)" ]]; then
-  volta pin node@"$(cat .node-version)" >/dev/null 2>&1 || true
-fi
-
 # <<< dotfiles managed <<<
 
