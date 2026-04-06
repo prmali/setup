@@ -103,6 +103,12 @@ else
   warn "configs/ghostty.config not found, skipping ghostty config"
 fi
 
+# Ghostty shaders (opt-in via custom-shader = ./shaders/<name>.glsl in config)
+if [[ -d "$SCRIPT_DIR/configs/ghostty-shaders" ]]; then
+  mkdir -p "$GHOSTTY_DIR/shaders"
+  cp "$SCRIPT_DIR/configs/ghostty-shaders/"*.glsl "$GHOSTTY_DIR/shaders/" 2>/dev/null || true
+fi
+
 # ----- Cursor settings -----
 purple "Configuring Cursor…"
 CURSOR_USER="$HOME/Library/Application Support/Cursor/User"
