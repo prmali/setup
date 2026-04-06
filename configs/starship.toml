@@ -1,20 +1,30 @@
 # Clean Starship config - colored text without backgrounds
 
-format = """$directory$git_branch$git_status$nodejs$python$docker_context$cmd_duration$line_break$character"""
+format = """$directory$package$nodejs$bun$python$rust$golang$terraform$lua$git_branch$git_status$git_metrics$docker_context$cmd_duration$jobs$status$line_break$character"""
+right_format = """$time"""
+continuation_prompt = "[▶▶](dimmed white) "
 
-add_newline = false
-palette = "catppuccin_mocha"
+add_newline = true
+palette = "muted_terminal"
+scan_timeout = 30
+command_timeout = 500
 
 [character]
-success_symbol = "[❯](lavender)"
-error_symbol   = "[❯](red)"
-vimcmd_symbol  = "[❮](green)"
+success_symbol = "[→](teal)"
+error_symbol   = "[→](rose)"
+vimcmd_symbol  = "[←](teal)"
 
 [directory]
-style = "bold sapphire"
-format = "[$path]($style) "
+style = "bold fg"
+format = "[$path]($style) [is](dim) "
 truncation_length = 3
 truncate_to_repo = true
+
+[package]
+symbol = "\uF487 "
+style = "rose"
+format = "[$symbol$version]($style) [via](dim) "
+display_private = false
 
 [directory.substitutions]
 "Documents" = "󰈙 "
@@ -24,12 +34,19 @@ truncate_to_repo = true
 "repos" = " "
 
 [git_branch]
-symbol = " "
-style = "mauve"
-format = "[$symbol$branch]($style) "
+symbol = "\uE725"
+style = "teal"
+format = "[on](dim) [$symbol $branch]($style) "
+
+[git_metrics]
+disabled = false
+added_style = "bold teal"
+deleted_style = "bold deep_rose"
+format = '([+$added]($added_style) )([-$deleted]($deleted_style) )'
+only_nonzero_diffs = true
 
 [git_status]
-style = "overlay0"
+style = "dim"
 format = "([$all_status$ahead_behind]($style) )"
 conflicted = "="
 ahead = "⇡${count}"
@@ -44,53 +61,80 @@ renamed = "»${count}"
 deleted = "✘${count}"
 
 [nodejs]
-symbol = " "
-format = "[$symbol($version )]($style)"
-style = "green"
+symbol = "\uE718 "
+format = "[$symbol$version]($style) [with](dim) "
+style = "rose"
 detect_files = ["package.json", "pnpm-workspace.yaml", "bun.lockb"]
 
 [python]
-symbol = " "
-style = "yellow"
-format = "[$symbol($version )($virtualenv )]($style)"
+symbol = "\uE235 "
+style = "rose"
+format = "[$symbol$version]($style) "
 detect_files = [".python-version", "pyproject.toml", "requirements.txt"]
+
+[bun]
+symbol = "\uE76F "
+style = "rose"
+format = "[$symbol$version]($style) "
+
+[rust]
+symbol = "\uE7A8 "
+style = "rose"
+format = "[$symbol$version]($style) "
+
+[golang]
+symbol = "\uE627 "
+style = "rose"
+format = "[$symbol$version]($style) "
+
+[terraform]
+symbol = "\uFBC0 "
+style = "rose"
+format = "[$symbol$version]($style) "
+
+[lua]
+symbol = "\uE620 "
+style = "rose"
+format = "[$symbol$version]($style) "
 
 [docker_context]
 symbol = " "
-style = "blue"
+style = "teal"
 format = "[$symbol($context )]($style)"
 only_with_files = true
 
 [cmd_duration]
 min_time = 500
-format = "took [$duration](bold yellow) "
+format = "took [$duration](bold rose) "
 disabled = false
 
 [time]
 disabled = false
-time_format = "%H:%M"
-format = "[$time]($style) "
-style = "overlay0"
+time_format = "%H:%M:%S"
+format = "[\uF017 $time]($style) "
+style = "dim"
 
-[palettes.catppuccin_mocha]
-rosewater = "#f5e0dc"
-flamingo  = "#f2cdcd"
-pink      = "#f5c2e7"
-mauve     = "#cba6f7"
-red       = "#f38ba8"
-maroon    = "#eba0ac"
-peach     = "#fab387"
-yellow    = "#f9e2af"
-green     = "#a6e3a1"
-teal      = "#94e2d5"
-sky       = "#89dceb"
-sapphire  = "#74c7ec"
-blue      = "#89b4fa"
-lavender  = "#b4befe"
-text      = "#cdd6f4"
-subtext0  = "#a6adc8"
-overlay0  = "#6c7086"
-surface0  = "#313244"
-base      = "#1e1e2e"
-mantle    = "#181825"
-crust     = "#11111b"
+[status]
+disabled = false
+symbol = "✘ "
+success_symbol = ""
+format = "[$symbol$common_meaning$signal_name$maybe_int]($style) "
+style = "bold deep_rose"
+map_symbol = true
+
+[jobs]
+symbol = "✦ "
+style = "bold teal"
+number_threshold = 1
+format = "[$symbol$number]($style) "
+
+[palettes.muted_terminal]
+# Matches configs/ghostty.config palette
+fg        = "#c1c1c1"
+dim       = "#888888"
+teal      = "#486e6f"
+rose      = "#dd9999"
+deep_rose = "#a06666"
+gray1     = "#888888"
+gray2     = "#999999"
+gray3     = "#aaaaaa"
